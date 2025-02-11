@@ -42,16 +42,18 @@ let currentState = 0
 
 // helper function that creates the buttons for each answer option. 
 function addAnswerButton(text, nextState) {
-    //creates the new button element
     const button = document.createElement("button");
-
-     // Adds an 'option-button' class for styling purposes
     button.classList.add("option-button");
+    button.innerText = text;  // Set button text
 
-    // Adds the button to the options container
+    button.addEventListener("click", function() {
+        currentState = nextState;
+        displayQuestion(); // Refresh the question
+    });
+
     const answersBox = document.getElementById("answers");
     answersBox.appendChild(button);
-
+}
 
 
 // Function to display the current question and answer options
@@ -68,14 +70,13 @@ function displayQuestion() {
     // checks that the answer is correct
 
     // Clear previous options
-    const questionBox = document.getElementById("answers");
-    optionsBox.innerHTML = "";
+    const answersBox = document.getElementById("answers");
+    answersBox.innerHTML = "";
 
     // Creates buttons for each option using the addAnswerButton helper function
-    currentQuiz.options.forEach(option => {
-        addAnswerButton(option.text, option.next);
-    });
-}
+    currentQuizQuestion.options.forEach((option, index) => {
+        addAnswerButton(option, index);
+});
 
 // Call the function to display the initial question and options
 displayQuestion();
