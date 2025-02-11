@@ -76,7 +76,8 @@ function displayQuestion() {
     // Creates buttons for each option using the addAnswerButton helper function
     currentQuizQuestion.options.forEach((option, index) => {
         addAnswerButton(option, index);
-});
+    });
+}
 
 // Call the function to display the initial question and options
 displayQuestion();
