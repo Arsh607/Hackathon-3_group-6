@@ -43,6 +43,7 @@ let currentState = 0
 // helper function that creates the buttons for each answer option. 
 function addAnswerButton(text, nextState) {
     const button = document.createElement("button");
+    //adds the option button
     button.classList.add("option-button");
     button.innerText = text;  // Set button text
 
@@ -76,7 +77,8 @@ function displayQuestion() {
     // Creates buttons for each option using the addAnswerButton helper function
     currentQuizQuestion.options.forEach((option, index) => {
         addAnswerButton(option, index);
-});
+    });
+}
 
 // Call the function to display the initial question and options
 displayQuestion();
