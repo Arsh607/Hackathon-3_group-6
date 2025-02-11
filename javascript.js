@@ -53,4 +53,29 @@ function addAnswerButton(text, nextState) {
     answersBox.appendChild(button);
 
 
-//function that iterates through the quiz array and confirms correct answers. Provides feedback for wrong answers. 
+
+// Function to display the current question and answer options
+function displayQuestion() {
+    // Gets the question container
+    const questionBox = document.getElementById("question");
+
+    // Gets the current question and options from the story array
+    const currentQuizQuestion = quiz[currentState];
+
+    // Sets the question text
+    questionBox.innerText = currentQuizQuestion.question;
+
+    // checks that the answer is correct
+
+    // Clear previous options
+    const questionBox = document.getElementById("answers");
+    optionsBox.innerHTML = "";
+
+    // Creates buttons for each option using the addAnswerButton helper function
+    currentQuiz.options.forEach(option => {
+        addAnswerButton(option.text, option.next);
+    });
+}
+
+// Call the function to display the initial question and options
+displayQuestion();
