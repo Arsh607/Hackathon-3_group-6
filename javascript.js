@@ -3,7 +3,7 @@ const quiz = [
     { 
         question: "Which river is NOT one of the two main rivers that meet in Winnipeg?", 
         options: ["Red River", "Assiniboine River", "Saskatchewan River"],
-        correct: 1  // Index of correct answer
+        correct: 2  // Index of correct answer
     },
     { 
         question: "What is one of Winnipeg's nicknames?", 
@@ -41,14 +41,13 @@ const quiz = [
 let currentState = 0
 
 // helper function that creates the buttons for each answer option. 
-function addAnswerButton(text, nextState) {
+function addAnswerButton(text, index) {
     const button = document.createElement("button");
     button.classList.add("option-button");
     button.innerText = text;  // Set button text
 
     button.addEventListener("click", function() {
-        currentState = nextState;
-        displayQuestion(); // Refresh the question
+        checkAnswer(index);
     });
 
     const answersBox = document.getElementById("answers");
@@ -80,4 +79,24 @@ function displayQuestion() {
 }
 
 // Call the function to display the initial question and options
-displayQuestion();
+function checkAnswer(selectedIndex) {
+    const currentQuizQuestion = quiz[currentState];
+
+    if (selectedIndex === currentQuizQuestion.correct) {
+        alert("Correct!");  // You can show a message for correct answer
+    } else {
+        alert("Wrong answer, try again!");
+    }
+
+    // Move to the next question (or end the quiz if it's the last question)
+    if (currentState < quiz.length - 1) {
+        currentState++;
+        displayQuestion();
+    } else {
+        alert("Quiz Finished!");
+    }
+}
+    // Start button logic
+document.getElementById("start-button").addEventListener("click", function() {
+    displayQuestion();  // Display the first question and answers
+});
