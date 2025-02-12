@@ -85,7 +85,7 @@ function checkAnswer(selectedIndex) {
     if (selectedIndex === currentQuizQuestion.correct) {
         alert("Correct!");  // You can show a message for correct answer
     } else {
-        alert("Wrong answer, try again!");
+        alert("Wrong answer!");
     }
 
     // Move to the next question (or end the quiz if it's the last question)
